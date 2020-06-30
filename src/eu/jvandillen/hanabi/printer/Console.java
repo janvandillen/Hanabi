@@ -3,7 +3,12 @@ package eu.jvandillen.hanabi.printer;
 import eu.jvandillen.hanabi.obj.GameBoard;
 import eu.jvandillen.hanabi.obj.Hand;
 
-public class ConsolePrinter implements Printer {
+import java.util.Scanner;
+
+public class Console implements Printer,Input {
+
+    Scanner sc = new Scanner(System.in);
+
     @Override
     public void start() {
         System.out.println("---------------------------------------------------------------------------------------");
@@ -24,4 +29,10 @@ public class ConsolePrinter implements Printer {
         System.out.println(board.getDiscard().toString());
     }
 
+    @Override
+    public String askName(int nb) {
+        System.out.println("You are player " + nb + ". What is your name");
+        String name = sc.nextLine();
+        return name;
+    }
 }
